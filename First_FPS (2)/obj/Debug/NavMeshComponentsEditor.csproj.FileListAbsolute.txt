@@ -1,0 +1,2 @@
+C:\Users\USER\Desktop\First_FPS (2)\obj\Debug\NavMeshComponentsEditor.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\First_FPS (2)\obj\Debug\NavMeshComponentsEditor.csproj.CoreCompileInputs.cache
