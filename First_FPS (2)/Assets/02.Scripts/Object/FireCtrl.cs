@@ -52,8 +52,7 @@ public class FireCtrl : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 15.0f;
         audio.PlayOneShot(fireSfx, 1.0f);
-        //Destroy(bullet, 2f);
-        Debug.Log("½¹");
+        Destroy(bullet, 5f);
     }
     
 }

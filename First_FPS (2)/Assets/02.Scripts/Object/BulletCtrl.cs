@@ -24,7 +24,6 @@ public class BulletCtrl : MonoBehaviour
         {
             return;
         }
-        Debug.Log(collision.collider.tag);
         Destroy(gameObject);
     }
 }
