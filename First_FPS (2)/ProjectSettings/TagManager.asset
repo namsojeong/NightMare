@@ -11,13 +11,10 @@ TagManager:
   - GUN
   - BALL
   - GALLIN
-  - BLUEF
-  - REDF
-  - PURPLEF
-  - PINKF
-  - YELLOWF
   - DUCKBULLET
   - JUMPGALL
+  - FxTemporaire
+  - ENEMY
   layers:
   - Default
   - TransparentFX

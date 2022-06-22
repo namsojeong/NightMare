@@ -10,6 +10,8 @@ public class BallDrop : MonoBehaviour
     [SerializeField]
     float deleteTime;
 
+    [SerializeField]
+    ParticleSystem spawnParticle;
 
     public bool isTouch = false;
 
@@ -24,13 +26,14 @@ public class BallDrop : MonoBehaviour
     {
         isTouch = false;
         StartCoroutine(Playing());
+        spawnParticle.Play();
     }
 
     IEnumerator Playing()
     {
         yield return new WaitForSeconds(deleteTime);
         if(!isTouch)
-        gameObject.SetActive(false);
+        GameMg.Instance().ReturnMonster(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,8 +45,8 @@ public class BallDrop : MonoBehaviour
         if(collision.collider.CompareTag("GALLIN"))
         {
             if (isTouch) return;
-            
-            gameObject.SetActive(false);
+
+            GameMg.Instance().ReturnMonster(collision.gameObject);
         }
     }
 
@@ -63,7 +66,6 @@ public class BallDrop : MonoBehaviour
 
     void BulletTouch()
     {
-            isTouch = true;
-            material.color = Color.white;
+        isTouch = true;
     }
 }

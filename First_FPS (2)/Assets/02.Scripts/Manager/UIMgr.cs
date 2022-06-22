@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class UIMgr : MonoBehaviour
 {
+    AudioSource audioSource;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void OpenUI(GameObject ui)
     {
         ui.SetActive(true);
@@ -20,5 +25,10 @@ public class UIMgr : MonoBehaviour
     {
         Debug.Log("Á¾·á");
         Application.Quit();
+    }
+
+    public void UIClick()
+    {
+        audioSource.Play();
     }
 }

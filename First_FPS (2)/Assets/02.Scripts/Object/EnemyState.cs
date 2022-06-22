@@ -2,5 +2,6 @@ public enum EnemyState
 {
   IDLE,
   RUN,
-  ATTACK
+  ATTACK,
+  FAINT
 }

@@ -22,58 +22,20 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTransform;
     private CharacterController playerCtrl;
 
-    private PlayerState curColorState;
+    AudioSource audioSource;
+    public AudioClip jumpClip;
+    public AudioClip enemyClip;
 
     EventParam eventParam = new EventParam();
     void Start()
     {
         playerCtrl = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
-
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
         PlayerMove();
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-            if (hit.collider.gameObject != null)
-            {
-                switch(hit.collider.tag)
-                {
-                    case "PURPLEF":
-                        curColorState = PlayerState.PURPLE;
-                        eventParam.playerStateParam = curColorState;
-                        EventManager.TriggerEvent("HPCOLOR", eventParam);
-                        break;
-                    case "BLUEF":
-                        curColorState = PlayerState.BLUE;
-                        eventParam.playerStateParam = curColorState;
-                        EventManager.TriggerEvent("HPCOLOR", eventParam);
-                        break;
-                    case "PINKF":
-                        curColorState = PlayerState.PINK;
-                        eventParam.playerStateParam = curColorState;
-                        EventManager.TriggerEvent("HPCOLOR", eventParam);
-                        break;
-                    case "YELLOWF":
-                        curColorState = PlayerState.YELLOW;
-                        eventParam.playerStateParam = curColorState;
-                        EventManager.TriggerEvent("HPCOLOR", eventParam);
-                        break;
-                    case "REDF":
-                        curColorState = PlayerState.RED;
-                        eventParam.playerStateParam = curColorState;
-                        EventManager.TriggerEvent("HPCOLOR", eventParam);
-                        break;
-                    default:
-                        break;
-                }
-                GameMg.Instance().colorState = curColorState;
-            }
-        }
     }
 
     void PlayerSetPos(EventParam eventParam)
@@ -92,7 +54,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpSpeed = 5f;
+            if (playerCtrl.isGrounded)
+            {
+                audioSource.clip = jumpClip;
+            audioSource.Play();
             Jump();
+            }
         }
         verticalVelocity += Physics.gravity.y * Time.deltaTime;
 
@@ -123,7 +90,6 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (playerCtrl.isGrounded)
             verticalVelocity = jumpSpeed;
     }
     private void OnCollisionEnter(Collision collision)
@@ -132,6 +98,8 @@ public class PlayerController : MonoBehaviour
         {
             jumpSpeed = 10;
             Jump();
+            audioSource.clip = enemyClip;
+            audioSource.Play();
         }
         
     }

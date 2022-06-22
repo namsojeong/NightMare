@@ -22,8 +22,6 @@ public class FireCtrl : MonoBehaviour
     private void Start()
     {
         audio = GetComponent<AudioSource>();
-
-        flash.gameObject.SetActive(false);
     }
 
     void Update()
@@ -40,7 +38,6 @@ public class FireCtrl : MonoBehaviour
                 if (hit.collider.gameObject != null)
                 {
                     Fire();
-                    flash.gameObject.SetActive(true);
                     flash.Play();
                 }
             }

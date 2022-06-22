@@ -30,6 +30,5 @@ public class GallInCtrl : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         material.color = Color.yellow;
-       // GameMg.Instance().OffJumpMap();
     }
 }
