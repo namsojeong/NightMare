@@ -33,6 +33,7 @@ public class DuckCtrl : MonoBehaviour
 
     int hp;
     int maxHP = 100;
+    bool isDead = false;
 
     private void Awake()
     {
@@ -50,9 +51,6 @@ public class DuckCtrl : MonoBehaviour
 
         // 상태에 따라 몬스터의 행동을 수행하는 코루틴 함수
         StartCoroutine(EnemyAction());
-    }
-    private void Update()
-    {
     }
     private void ResetEnemy()
     {
@@ -75,7 +73,10 @@ public class DuckCtrl : MonoBehaviour
             }
             else
             {
-                state = EnemyState.IDLE;
+                if (hp <= 0)
+                    state = EnemyState.FAINT;
+                else
+                    state = EnemyState.IDLE;
             }
         }
     }
@@ -83,7 +84,8 @@ public class DuckCtrl : MonoBehaviour
     {
         while (true)
         {
-        target = GameMg.Instance().player.transform;
+            Debug.Log(state);
+            target = GameMg.Instance().player.transform;
             switch (state)
             {
                 case EnemyState.ATTACK:
@@ -105,9 +107,14 @@ public class DuckCtrl : MonoBehaviour
                     anim.SetBool(hashRun, false);
                     break;
                 case EnemyState.FAINT:
-                    anim.SetTrigger(hashFaint);
+                    anim.SetBool(hashRun, false);
+                    anim.SetBool(hashAttack, false);
+                    anim.SetBool(hashFaint, true);
                     agent.isStopped = true;
                     hp = maxHP;
+                    yield return new WaitForSeconds(10f);
+                    anim.SetBool(hashFaint, false);
+                    isDead = false;
                     break;
             }
             yield return new WaitForSeconds(0.3f);
@@ -122,7 +129,7 @@ public class DuckCtrl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("BULLET"))
+        if (collision.collider.CompareTag("BULLET"))
         {
             Damage();
         }
@@ -130,14 +137,15 @@ public class DuckCtrl : MonoBehaviour
     void Damage()
     {
         Debug.Log(hp);
+        if (isDead) return;
+        anim.SetBool(hashRun, false);
+        anim.SetBool(hashAttack, false);
+        anim.SetTrigger(hashDamage);
         hp -= 20;
         if (hp <= 0)
         {
+            isDead = true;
             state = EnemyState.FAINT;
-        }
-        else
-        {
-            anim.SetTrigger(hashDamage);
         }
     }
 }
