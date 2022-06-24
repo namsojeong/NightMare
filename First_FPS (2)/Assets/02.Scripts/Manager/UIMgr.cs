@@ -21,8 +21,6 @@ public class UIMgr : MonoBehaviour
     }
     public void CloseUI(GameObject ui)
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         ui.SetActive(false);
         Time.timeScale = 1.0f;
     }

@@ -136,7 +136,6 @@ public class DuckCtrl : MonoBehaviour
     }
     void Damage()
     {
-        Debug.Log(hp);
         if (isDead) return;
         anim.SetBool(hashRun, false);
         anim.SetBool(hashAttack, false);

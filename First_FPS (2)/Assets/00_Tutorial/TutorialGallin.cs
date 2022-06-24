@@ -22,33 +22,27 @@ public class TutorialGallin : MonoBehaviour
     [SerializeField]
     GameObject overPanel;
 
-    bool isMouse =false;
     public State state = State.INTRO;
-
+    bool isOver = false;
     public static TutorialGallin instance;
 
-    EventParam eventParam = new EventParam();
     private void Awake()
     {
         instance = this;
+        Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        EventManager.StartListening("ISTUTORIALBALL", TouchBall);
     }
     private void Start()
     {
         state = State.INTRO;
         StartCoroutine(StateAction());
     }
-    private void OnDestroy()
-    {
-        EventManager.StopListening("ISTUTORIALBALL", TouchBall);
-        
-    }
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            if (isOver) return;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             exitPanel.SetActive(true);
@@ -56,15 +50,16 @@ public class TutorialGallin : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0))
         {
-            isMouse = true;
+            if (state== State.SHOOT)
+            {
+                state = State.COLL;
+                StartCoroutine(StateAction());
+            }
         }
-        else 
-            isMouse = false;
     }
     public IEnumerator StateAction()
     {
         string s;
-        Debug.Log(state);
         switch (state)
         {
             case State.INTRO:
@@ -77,11 +72,6 @@ public class TutorialGallin : MonoBehaviour
             case State.SHOOT:
                 s = "먼저 좌클릭을 눌러보세요. 그러면 총알(비눗방울)이 나갑니다.";
                 Explain(s);
-                while(!isMouse)
-                {
-                }
-                state = State.COLL;
-                StartCoroutine(StateAction());
                 break;
             case State.COLL:
                 s = "공에 총알을 맞춰보세요!";
@@ -93,7 +83,7 @@ public class TutorialGallin : MonoBehaviour
                 break;
         }
     }
-    void TouchBall(EventParam eventParam)
+   public void TouchBall()
     {
         state = State.GALLIN;
         StartCoroutine(StateAction());
@@ -101,23 +91,28 @@ public class TutorialGallin : MonoBehaviour
 
    public void IsGameOver()
     {
+        isOver = true;
         StartCoroutine(Over());   
     }
 
     IEnumerator Over()
     {
-        yield return new WaitForSeconds(5f);
         overPanel.SetActive(true);
+        yield return new WaitForSeconds(3f);
         SceneMg.Instance().ChangeScene("Main");
     }
-    private void ResetStr()
+    public void BulletTriger()
     {
-        ex.text = string.Format("");
+        if(state==State.COLL)
+        {
+            state = State.GALLIN;
+            StartCoroutine(StateAction());
+        }
     }
     void Explain(string str)
     {
-            ResetStr();
-        ex.DOText(str, 1f);
+        ex.text = string.Format("");
+        ex.DOText(str, 2f);
         
     }
     

@@ -13,6 +13,8 @@ public class StartScript : MonoBehaviour
     public UnityAction action;
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         action = () => OnStartClick();
         startButton.onClick.AddListener(action);
         optiontButton.onClick.AddListener(delegate { OnButtonClick(optiontButton.name); });

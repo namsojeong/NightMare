@@ -24,16 +24,11 @@ public class GallTutorial : MonoBehaviour
         if (collision.collider.CompareTag("BALL"))
         {
             isTouch = true;
-            eventParam.boolParam = isTouch;
-            EventManager.TriggerEvent("ISTUTORIALBALL", eventParam);
+            TutorialGallin.instance.IsGameOver();
             audioSource.Play();
             gallParticle.Play();
-            CorrectGall();
         }
     }
 
-    void CorrectGall()
-    {
-        TutorialGallin.instance.IsGameOver();
-    }
+ 
 }
