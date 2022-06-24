@@ -53,6 +53,7 @@ public struct EventParam
     public string stringParam;
     public int intParam;
     public float floatParam;
+    public bool boolParam;
     public Vector3 vectorParam;
     public PlayerState playerStateParam;
 }

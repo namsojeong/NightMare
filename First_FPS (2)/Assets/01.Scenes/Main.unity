@@ -1953,6 +1953,8 @@ RectTransform:
   - {fileID: 3176828544241654448}
   - {fileID: 3176828544037886955}
   - {fileID: 1321217922}
+  - {fileID: 3176828543990132344}
+  - {fileID: 3176828544475799613}
   m_Father: {fileID: 855223904}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2029,7 +2031,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3176828544241654448}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2051,16 +2053,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3176828543990132345}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3176828544241654448}
-  m_RootOrder: 0
+  m_Father: {fileID: 3176828543663602343}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00074005, y: 0}
+  m_AnchoredPosition: {x: -346.00073, y: -64}
   m_SizeDelta: {x: 508.12, y: 617.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3176828543990132345
@@ -2076,7 +2078,7 @@ GameObject:
   - component: {fileID: 3176828543990132346}
   - component: {fileID: 3176828543990132347}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BallButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,7 +2167,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TitorialBall
+          m_StringArgument: TutorialBall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &3176828543990132349
@@ -2235,7 +2237,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3176828544475799613}
   - {fileID: 3176828544354341488}
   - {fileID: 3176828544080165450}
   m_Father: {fileID: 3176828543663602343}
@@ -2266,7 +2267,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3176828544037886955}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2340,7 +2341,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3176828543990132344}
   - {fileID: 3176828545272338213}
   - {fileID: 3176828543709878359}
   m_Father: {fileID: 3176828543663602343}
@@ -2419,7 +2419,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3176828544037886955}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2499,7 +2499,7 @@ GameObject:
   - component: {fileID: 3176828544475799615}
   - component: {fileID: 3176828544475799612}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EnemyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2568,16 +2568,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3176828544475799610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3176828544037886955}
-  m_RootOrder: 0
+  m_Father: {fileID: 3176828543663602343}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00074005, y: 0}
+  m_AnchoredPosition: {x: 417.82874, y: -64}
   m_SizeDelta: {x: 508.12, y: 617.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3176828544475799614
@@ -2682,7 +2682,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3176828544241654448}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

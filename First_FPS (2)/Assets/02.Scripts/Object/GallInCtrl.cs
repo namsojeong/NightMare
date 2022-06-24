@@ -14,14 +14,6 @@ public class GallInCtrl : MonoBehaviour
         material = meshRenderer.material;
     }
 
-    void JumpGall()
-    {
-        if (isTrue) return;
-        isTrue = true;
-        GameMg.Instance().DisplayScore(100);
-        material.color = Color.clear;
-        StartCoroutine(ResetColor());
-    }
     private void OnEnable()
     {
         isTrue = false;

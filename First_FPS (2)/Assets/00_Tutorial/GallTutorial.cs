@@ -7,12 +7,13 @@ public class GallTutorial : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem gallParticle;
-    [SerializeField]
-    Image select;
 
     MeshRenderer meshRenderer;
     AudioSource audioSource;
 
+    bool isTouch = false;
+
+    EventParam eventParam = new EventParam();
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -22,7 +23,9 @@ public class GallTutorial : MonoBehaviour
     {
         if (collision.collider.CompareTag("BALL"))
         {
-            GameMg.Instance().ReturnMonster(collision.gameObject);
+            isTouch = true;
+            eventParam.boolParam = isTouch;
+            EventManager.TriggerEvent("ISTUTORIALBALL", eventParam);
             audioSource.Play();
             gallParticle.Play();
             CorrectGall();
@@ -31,6 +34,6 @@ public class GallTutorial : MonoBehaviour
 
     void CorrectGall()
     {
-
+        TutorialGallin.instance.IsGameOver();
     }
 }

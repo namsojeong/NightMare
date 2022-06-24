@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveD = cameraTransform.rotation * new Vector3(h, 0, v);
         dir = new Vector3(moveD.x, 0, moveD.z);
-
         if (Input.GetButtonDown("Jump"))
         {
             jumpSpeed = 5f;
@@ -102,12 +101,5 @@ public class PlayerController : MonoBehaviour
             audioSource.Play();
         }
         
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("JUMPGALL"))
-        {
-            other.SendMessage("JumpGall");
-        }
     }
 }

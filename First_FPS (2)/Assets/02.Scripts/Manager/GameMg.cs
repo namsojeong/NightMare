@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class GameMg : MonoBehaviour
 {
@@ -58,13 +56,11 @@ public class GameMg : MonoBehaviour
             instance = this;
     }
 
-    private void Update()
-    {
-        Cursor.visible = false;
-    }
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         DisplayScore(0);
         bestScore = PlayerPrefs.GetInt("BESTSCORE", 0);
 
