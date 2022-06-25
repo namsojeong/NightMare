@@ -15,7 +15,7 @@ public class GameMg : MonoBehaviour
     [SerializeField]
     private TMP_Text overScoreText;
 
-    public GameObject player;
+    //public GameObject player;
     public GameObject monster;
     public List<Transform> points = new List<Transform>();
     public List<GameObject> monsterPool = new List<GameObject>();

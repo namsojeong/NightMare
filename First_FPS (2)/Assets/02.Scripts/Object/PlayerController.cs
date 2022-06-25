@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.collider.CompareTag("DUCKBULLET"))
         {
+            Debug.Log("BU");
             jumpSpeed = 10;
             Jump();
             audioSource.clip = enemyClip;

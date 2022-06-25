@@ -21,6 +21,9 @@ public class TutorialGallin : MonoBehaviour
     
     [SerializeField]
     GameObject overPanel;
+    
+    [SerializeField]
+    GameObject ball;
 
     public State state = State.INTRO;
     bool isOver = false;
@@ -70,15 +73,16 @@ public class TutorialGallin : MonoBehaviour
                 StartCoroutine(StateAction());
                 break;
             case State.SHOOT:
-                s = "먼저 좌클릭을 눌러보세요. 그러면 총알(비눗방울)이 나갑니다.";
+                s = "먼저 좌클릭을 눌러보세요. 그러면 비눗방울이 나갑니다.";
                 Explain(s);
                 break;
             case State.COLL:
+                ball.SetActive(true);
                 s = "공에 총알을 맞춰보세요!";
                 Explain(s);
                 break;
             case State.GALLIN:
-                s = "자 이제 총알로 공을 밀어서 빨간 테두리 안에 넣어보세요.";
+                s = "자 이제 총알로 공을 밀어서 저 앞 입구에 넣어보세요.";
                 Explain(s);
                 break;
         }

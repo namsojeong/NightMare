@@ -13,8 +13,6 @@ public enum EnemyState
 public class DuckCtrl : MonoBehaviour
 {
     [SerializeField]
-    float maxDis;
-    [SerializeField]
     float attackDis = 30;
     [SerializeField]
     float traceDis;
@@ -28,7 +26,6 @@ public class DuckCtrl : MonoBehaviour
     ParticleSystem faintParticle;
 
     NavMeshAgent agent;
-    Transform target;
     Animator anim;
 
     EnemyState state;
@@ -42,13 +39,15 @@ public class DuckCtrl : MonoBehaviour
     int maxHP = 100;
     bool isDead = false;
 
+    public Transform target;
+
     private void Awake()
     {
-        state = EnemyState.IDLE;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-    }
 
+        state = EnemyState.IDLE;
+    }
     private void OnEnable()
     {
         ResetEnemy();
@@ -63,6 +62,7 @@ public class DuckCtrl : MonoBehaviour
     {
         hp = maxHP;
     }
+
     IEnumerator CheckEnemyState()
     {
         while (true)
@@ -80,8 +80,7 @@ public class DuckCtrl : MonoBehaviour
             }
             else
             {
-                
-                    state = EnemyState.IDLE;
+                state = EnemyState.IDLE;
             }
         }
     }
@@ -89,15 +88,14 @@ public class DuckCtrl : MonoBehaviour
     {
         while (true)
         {
-            target = GameMg.Instance().player.transform;
             switch (state)
             {
                 case EnemyState.ATTACK:
                     agent.isStopped = true;
                     transform.LookAt(target.position);
-                    anim.SetBool(hashRun, false);
-                    anim.SetBool(hashFaint, false);
-                    anim.SetBool(hashAttack, true);
+                    //anim.SetBool(hashRun, false);
+                    //anim.SetBool(hashFaint, false);
+                    anim.SetTrigger(hashAttack);
                     BulletSpawn();
                     yield return new WaitForSeconds(0.25f);
                     break;
@@ -106,7 +104,7 @@ public class DuckCtrl : MonoBehaviour
                     anim.SetBool(hashFaint, false);
                     anim.SetBool(hashAttack, false);
                     anim.SetBool(hashRun, true);
-                    agent.SetDestination(target.transform.position);
+                    agent.SetDestination(target.position);
                     break;
                 case EnemyState.IDLE:
                     agent.isStopped = true;
@@ -130,9 +128,9 @@ public class DuckCtrl : MonoBehaviour
     }
     void BulletSpawn()
     {
-        GameObject bullet = Instantiate(dbullet, bulletPos.position, Quaternion.identity);
+        GameObject bullet = Instantiate(dbullet, bulletPos.position, bulletPos.rotation);
         enemyShootP.Play();
-        bullet.GetComponent<Rigidbody>().velocity = bulletPos.forward * 15.0f;
+        bullet.GetComponent<Rigidbody>().velocity = transform.forward * 15.0f;
         Destroy(bullet, 2f);
     }
     private void OnCollisionEnter(Collision collision)
@@ -145,8 +143,8 @@ public class DuckCtrl : MonoBehaviour
     }
     void Damage()
     {
-        anim.SetBool(hashAttack, false);
-        anim.SetBool(hashRun, false);
+        //anim.SetBool(hashAttack, false);
+        //anim.SetBool(hashRun, false);
         anim.SetTrigger(hashDamage);
         hp -= 10;
         if (hp <= 0)
