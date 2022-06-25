@@ -169,7 +169,7 @@ public class GameMg : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        overScoreText.text = string.Format($"Gall {totalScore}");
+        overScoreText.text = string.Format($"Gall\n{totalScore}");
         bestScoreText.text = string.Format($"Best score {PlayerPrefs.GetInt("BESTSCORE"),0}");
     }
 

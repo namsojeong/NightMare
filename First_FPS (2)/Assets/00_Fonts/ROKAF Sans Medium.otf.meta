@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 913f499e21bbe1849a4ab3abe6de1780
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - ROKAF Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 00039eaf05af2d34eb299c4b0d1ebcd7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

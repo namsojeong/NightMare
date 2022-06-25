@@ -2260,11 +2260,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: 913f499e21bbe1849a4ab3abe6de1780, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -3152,6 +3152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7406627827008505278, guid: 1d060ec4c706d0848bd97799bb322f00,
     type: 3}
+  power: 30
   firePos: {fileID: 2368934880015117659}
   fireSfx: {fileID: 8300000, guid: 6dc8664deb37bad499971dc5b3821c62, type: 3}
   flash: {fileID: 2123150760}
