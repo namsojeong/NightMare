@@ -93,8 +93,6 @@ public class DuckCtrl : MonoBehaviour
                 case EnemyState.ATTACK:
                     agent.isStopped = true;
                     transform.LookAt(target.position);
-                    //anim.SetBool(hashRun, false);
-                    //anim.SetBool(hashFaint, false);
                     BulletSpawn();
                     anim.SetTrigger(hashAttack);
                     yield return new WaitForSeconds(0.25f);
@@ -128,7 +126,7 @@ public class DuckCtrl : MonoBehaviour
     }
     void BulletSpawn()
     {
-        GameObject bullet = Instantiate(dbullet, bulletPos.position, Quaternion.identity);
+        GameObject bullet = Instantiate(dbullet, bulletPos.position, bulletPos.rotation);
         enemyShootP.Play();
         bullet.GetComponent<Rigidbody>().velocity = transform.forward * 15.0f;
         Destroy(bullet, 2f);
@@ -143,8 +141,6 @@ public class DuckCtrl : MonoBehaviour
     }
     void Damage()
     {
-        //anim.SetBool(hashAttack, false);
-        //anim.SetBool(hashRun, false);
         anim.SetTrigger(hashDamage);
         hp -= 10;
         if (hp <= 0)
