@@ -8,6 +8,9 @@ public class FireCtrl : MonoBehaviour
     // ÃÑ¾Ë ÇÁ¸®ÆÕ
     public GameObject bulletPrefab;
 
+    [SerializeField]
+    float power = 30f;
+
     // ÃÑ¾Ë ¹ß»ç ÁÂÇ¥
     public Transform firePos;
 
@@ -47,7 +50,7 @@ public class FireCtrl : MonoBehaviour
     void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 15.0f;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * power;
         audio.PlayOneShot(fireSfx, 1.0f);
         Destroy(bullet, 5f);
     }

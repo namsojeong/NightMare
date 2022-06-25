@@ -15,6 +15,7 @@ public class StartScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 1f;
         action = () => OnStartClick();
         startButton.onClick.AddListener(action);
         optiontButton.onClick.AddListener(delegate { OnButtonClick(optiontButton.name); });

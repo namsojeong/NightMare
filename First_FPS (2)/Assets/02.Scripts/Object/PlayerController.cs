@@ -91,16 +91,16 @@ public class PlayerController : MonoBehaviour
     {
             verticalVelocity = jumpSpeed;
     }
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.CompareTag("DUCKBULLET"))
+        if(other.CompareTag("DUCKBULLET"))
         {
-            Debug.Log("BU");
+            Destroy(other.gameObject);
             jumpSpeed = 10;
             Jump();
             audioSource.clip = enemyClip;
             audioSource.Play();
         }
-        
     }
 }

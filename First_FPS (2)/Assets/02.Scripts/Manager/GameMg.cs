@@ -14,16 +14,18 @@ public class GameMg : MonoBehaviour
     private TMP_Text bestScoreText;
     [SerializeField]
     private TMP_Text overScoreText;
+    [SerializeField]
+    ParticleSystem getTimeItemP;
 
     //public GameObject player;
-    public GameObject monster;
+    public GameObject ball;
     public List<Transform> points = new List<Transform>();
-    public List<GameObject> monsterPool = new List<GameObject>();
+    public List<GameObject> ballPool = new List<GameObject>();
 
     public float createTime = 3.0f;
     public int maxMonster = 10;
     private int nowMonsterCnt = 0;
-        int idx;
+    private int idx;
 
     public TMP_Text scoreText;
     private int totalScore;
@@ -60,7 +62,6 @@ public class GameMg : MonoBehaviour
         return instance;
     }
 
-
     private void Awake()
     {
         if (instance == null)
@@ -83,19 +84,19 @@ public class GameMg : MonoBehaviour
         {
             points.Add(pos);
         }
-        CreateMonsterPool();
-        InvokeRepeating("CreateMonster", 2.0f, createTime);
+        CreateBallPool();
+        InvokeRepeating("CreateBall", 2.0f, createTime);
     }
     private void Update()
     {
         TimeAttack();
     }
-    private void CreateMonster()
+    private void CreateBall()
     {
         if (nowMonsterCnt > 2) return;
         idx = Random.Range(0, points.Count);
 
-        GameObject _monster = GetMonsterInPool();
+        GameObject _monster = GetBallInPool();
 
         _monster?.transform.SetPositionAndRotation(points[idx].position, points[idx].rotation);
         _monster?.SetActive(true);
@@ -116,30 +117,30 @@ public class GameMg : MonoBehaviour
         timeText.text = string.Format(Mathf.Round(setTime).ToString());
     }
 
-    void CreateMonsterPool()
+    void CreateBallPool()
     {
         for (int i = 0; i < maxMonster; ++i)
         {
-            var _monster = Instantiate<GameObject>(monster);
+            var _monster = Instantiate<GameObject>(ball);
 
             _monster.name = $"Monster_{i:00}";
 
             _monster.SetActive(false);
 
-            monsterPool.Add(_monster);
+            ballPool.Add(_monster);
         }
     }
 
     public void ReturnMonster(GameObject mon)
     {
         mon.SetActive(false);
-        monsterPool.Add(mon);
+        ballPool.Add(mon);
         nowMonsterCnt--;
     }
 
-    public GameObject GetMonsterInPool()
+    public GameObject GetBallInPool()
     {
-        foreach (var _monster in monsterPool)
+        foreach (var _monster in ballPool)
         {
             if (_monster.activeSelf == false)
             {
@@ -171,4 +172,12 @@ public class GameMg : MonoBehaviour
         overScoreText.text = string.Format($"Gall {totalScore}");
         bestScoreText.text = string.Format($"Best score {PlayerPrefs.GetInt("BESTSCORE"),0}");
     }
+
+    public void UpTime(int time)
+    {
+        getTimeItemP.Play();
+        setTime += time;
+    }
+
+
 }
