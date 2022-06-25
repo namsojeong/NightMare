@@ -55,6 +55,5 @@ public struct EventParam
     public float floatParam;
     public bool boolParam;
     public Vector3 vectorParam;
-    public PlayerState playerStateParam;
 }
 

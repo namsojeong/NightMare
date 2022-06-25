@@ -59,7 +59,7 @@ public class BallDrop : MonoBehaviour
         if (other.CompareTag("GALLIN"))
         {
             if (isTouch) return;
-            GameMg.Instance().DisplayScore(500);
+            GameMg.Instance().DisplayScore(1);
             gameObject.SetActive(false);
         }
     }

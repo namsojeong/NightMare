@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+public enum EnemyState
+{
+    IDLE,
+    RUN,
+    ATTACK,
+    FAINT
+}
 
 public class DuckCtrl : MonoBehaviour
 {
@@ -61,7 +68,7 @@ public class DuckCtrl : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.3f);
-
+            if (isDead) continue;
             float distance = Vector3.Distance(transform.position, target.position);
             if (distance <= attackDis)
             {
@@ -73,9 +80,7 @@ public class DuckCtrl : MonoBehaviour
             }
             else
             {
-                if (hp <= 0)
-                    state = EnemyState.FAINT;
-                else
+                
                     state = EnemyState.IDLE;
             }
         }
@@ -84,36 +89,39 @@ public class DuckCtrl : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(state);
             target = GameMg.Instance().player.transform;
             switch (state)
             {
                 case EnemyState.ATTACK:
-                    transform.LookAt(target.position);
                     agent.isStopped = true;
+                    transform.LookAt(target.position);
                     anim.SetBool(hashRun, false);
+                    anim.SetBool(hashFaint, false);
                     anim.SetBool(hashAttack, true);
                     BulletSpawn();
                     yield return new WaitForSeconds(0.25f);
                     break;
                 case EnemyState.RUN:
-                    anim.SetBool(hashAttack, false);
-                    agent.SetDestination(target.transform.position);
                     agent.isStopped = false;
+                    anim.SetBool(hashFaint, false);
+                    anim.SetBool(hashAttack, false);
                     anim.SetBool(hashRun, true);
+                    agent.SetDestination(target.transform.position);
                     break;
                 case EnemyState.IDLE:
                     agent.isStopped = true;
-                    anim.SetBool(hashRun, false);
-                    break;
-                case EnemyState.FAINT:
+                    anim.SetBool(hashFaint, false);
                     anim.SetBool(hashRun, false);
                     anim.SetBool(hashAttack, false);
-                    anim.SetBool(hashFaint, true);
+                    break;
+                case EnemyState.FAINT:
                     agent.isStopped = true;
+                    anim.SetBool(hashAttack, false);
+                    anim.SetBool(hashRun, false);
+                    anim.SetBool(hashFaint, true);
+                    faintParticle.Play();
                     hp = maxHP;
                     yield return new WaitForSeconds(10f);
-                    anim.SetBool(hashFaint, false);
                     isDead = false;
                     break;
             }
@@ -131,20 +139,20 @@ public class DuckCtrl : MonoBehaviour
     {
         if (collision.collider.CompareTag("BULLET"))
         {
+            if (isDead) return;
             Damage();
         }
     }
     void Damage()
     {
-        if (isDead) return;
-        anim.SetBool(hashRun, false);
         anim.SetBool(hashAttack, false);
+        anim.SetBool(hashRun, false);
         anim.SetTrigger(hashDamage);
-        hp -= 20;
+        hp -= 10;
         if (hp <= 0)
         {
-            isDead = true;
             state = EnemyState.FAINT;
+            isDead = true;
         }
     }
 }

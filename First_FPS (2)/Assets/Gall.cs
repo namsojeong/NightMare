@@ -23,7 +23,7 @@ public class Gall : MonoBehaviour
             GameMg.Instance().ReturnMonster(collision.gameObject);
             audioSource.Play();
             gallParticle.Play();
-            GameMg.Instance().DisplayScore(500);
+            GameMg.Instance().DisplayScore(1);
             eventParam.intParam = 50;
             EventManager.TriggerEvent("MINUSHP", eventParam);
         }

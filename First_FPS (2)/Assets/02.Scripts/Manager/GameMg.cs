@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class GameMg : MonoBehaviour
 {
+    [SerializeField]
+    float setTime;
+    [SerializeField]
+    TMP_Text timeText;
+    [SerializeField]
+    GameObject gameoverImage;
+    [SerializeField]
+    private TMP_Text bestScoreText;
+    [SerializeField]
+    private TMP_Text overScoreText;
+
     public GameObject player;
     public GameObject monster;
     public List<Transform> points = new List<Transform>();
@@ -14,7 +25,6 @@ public class GameMg : MonoBehaviour
     private int nowMonsterCnt = 0;
         int idx;
 
-    public PlayerState colorState;
     public TMP_Text scoreText;
     private int totalScore;
     private int bestScore;
@@ -34,6 +44,7 @@ public class GameMg : MonoBehaviour
     }
 
     private static GameMg instance;
+
     public static GameMg Instance()
     {
         if (instance == null)
@@ -61,6 +72,8 @@ public class GameMg : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        timeText.text = setTime.ToString();
         DisplayScore(0);
         bestScore = PlayerPrefs.GetInt("BESTSCORE", 0);
 
@@ -72,7 +85,10 @@ public class GameMg : MonoBehaviour
         }
         CreateMonsterPool();
         InvokeRepeating("CreateMonster", 2.0f, createTime);
-        InvokeRepeating("TimeScore", 1f, 1f);
+    }
+    private void Update()
+    {
+        TimeAttack();
     }
     private void CreateMonster()
     {
@@ -84,6 +100,20 @@ public class GameMg : MonoBehaviour
         _monster?.transform.SetPositionAndRotation(points[idx].position, points[idx].rotation);
         _monster?.SetActive(true);
         nowMonsterCnt++;
+    }
+
+    void TimeAttack()
+    {
+        if(setTime>0)
+        {
+            setTime -= Time.deltaTime;
+        }
+        else if(setTime<=0)
+        {
+            GameOver();
+        }
+
+        timeText.text = string.Format(Mathf.Round(setTime).ToString());
     }
 
     void CreateMonsterPool()
@@ -124,7 +154,6 @@ public class GameMg : MonoBehaviour
     {
         totalScore += score;
         scoreText.text = string.Format($"{totalScore}");
-        PlayerPrefs.SetInt("SCORE", totalScore);
 
         if (totalScore > bestScore)
         {
@@ -133,12 +162,13 @@ public class GameMg : MonoBehaviour
         }
     }
 
-    public Vector3 GetPlayerPos()
+    private void GameOver()
     {
-        return player.transform.position;
-    }
-    void TimeScore()
-    {
-        DisplayScore(1);
+        gameoverImage.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        overScoreText.text = string.Format($"Gall {totalScore}");
+        bestScoreText.text = string.Format($"Best score {PlayerPrefs.GetInt("BESTSCORE"),0}");
     }
 }
