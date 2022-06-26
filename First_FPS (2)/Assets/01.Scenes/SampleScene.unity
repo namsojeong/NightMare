@@ -1785,9 +1785,9 @@ GameObject:
   - component: {fileID: 1006544272}
   - component: {fileID: 1006544271}
   - component: {fileID: 1006544270}
-  - component: {fileID: 1006544269}
   - component: {fileID: 1006544268}
   - component: {fileID: 1006544273}
+  - component: {fileID: 1006544269}
   m_Layer: 0
   m_Name: GallInEnemy
   m_TagString: Untagged
@@ -1899,9 +1899,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &1022562371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3543143930357675665, guid: 8e96a5cadf0c8f948b8c09bc6772e39e,
@@ -4148,6 +4148,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4804321564610498135, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.21
+      objectReference: {fileID: 0}
     - target: {fileID: 4814238454287904994, guid: 25be5bffec461e641ba7bc98e98695d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4318,6 +4323,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6931300861838815887, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.409
+      objectReference: {fileID: 0}
     - target: {fileID: 6931300861841400739, guid: 25be5bffec461e641ba7bc98e98695d8,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4457,6 +4467,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931300861960246073, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.0218
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931300861960246073, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.2977
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931300861960246073, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2263
       objectReference: {fileID: 0}
     - target: {fileID: 6931300861962625611, guid: 25be5bffec461e641ba7bc98e98695d8,
         type: 3}
@@ -5718,6 +5743,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6931300863444718409, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.409
+      objectReference: {fileID: 0}
     - target: {fileID: 6931300863444844391, guid: 25be5bffec461e641ba7bc98e98695d8,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5777,6 +5807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931300863523076094, guid: 25be5bffec461e641ba7bc98e98695d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.103
       objectReference: {fileID: 0}
     - target: {fileID: 6931300863524854136, guid: 25be5bffec461e641ba7bc98e98695d8,
         type: 3}
