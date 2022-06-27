@@ -42,7 +42,7 @@ public class BallDrop : MonoBehaviour
         {
             BulletTouch();
         }
-        if(collision.collider.CompareTag("GALLIN"))
+        if(collision.collider.CompareTag("GOALIN"))
         {
             if (isTouch) return;
 
@@ -56,7 +56,7 @@ public class BallDrop : MonoBehaviour
         {
             BulletTouch();
         }
-        if (other.CompareTag("GALLIN"))
+        if (other.CompareTag("GOALIN"))
         {
             if (isTouch) return;
             GameMg.Instance().DisplayScore(1);

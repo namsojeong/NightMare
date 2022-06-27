@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 6467126127277787188}
   - component: {fileID: 6467126127277787194}
   - component: {fileID: 6467126127277787184}
+  - component: {fileID: 946112355020543213}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: ENEMY
@@ -922,8 +923,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 6467126127277787195}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.1
+  m_Speed: 25
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -931,7 +932,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -952,7 +953,7 @@ MonoBehaviour:
   dbullet: {fileID: 8801147858958835147, guid: 8c29c6e64d8b37e418d332b447550531, type: 3}
   bulletPos: {fileID: 457758016713602048}
   enemyShootP: {fileID: 3825139804549800779}
-  faintParticle: {fileID: 0}
+  faintParticle: {fileID: 3825139804549800781}
   target: {fileID: 0}
 --- !u!136 &6467126127277787184
 CapsuleCollider:
@@ -968,6 +969,22 @@ CapsuleCollider:
   m_Height: 1.8529993
   m_Direction: 1
   m_Center: {x: 0, y: 0.9181838, z: 0}
+--- !u!54 &946112355020543213
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467126127277787195}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6467126127277787197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2175,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 11400004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!198 &3825139804549800781 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800002, guid: 7867af58a6ec48846ae807eb4022fbaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 3825139804564880527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &3825139804549800779 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19800004, guid: 7867af58a6ec48846ae807eb4022fbaa,

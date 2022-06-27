@@ -759,8 +759,8 @@ GameObject:
   - component: {fileID: 787573105}
   - component: {fileID: 787573104}
   m_Layer: 0
-  m_Name: Gall
-  m_TagString: GALLIN
+  m_Name: Goal
+  m_TagString: GOALIN
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

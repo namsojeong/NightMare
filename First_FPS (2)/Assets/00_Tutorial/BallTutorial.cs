@@ -8,11 +8,11 @@ public class BallTutorial : MonoBehaviour
     {
         if(collision.collider.CompareTag("BULLET"))
         {
-            TutorialGallin.instance.BulletTriger();
+            TutorialGoalin.instance.BulletTriger();
         }
-        if(collision.collider.CompareTag("GALLIN"))
+        if(collision.collider.CompareTag("GOALIN"))
         {
-                TutorialGallin.instance.IsGameOver();
+                TutorialGoalin.instance.IsGameOver();
         }
     }
 }

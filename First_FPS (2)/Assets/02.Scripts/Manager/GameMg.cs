@@ -71,6 +71,7 @@ public class GameMg : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -102,6 +103,15 @@ public class GameMg : MonoBehaviour
         _monster?.SetActive(true);
         nowMonsterCnt++;
     }
+
+    //void CreateBall()
+    //{
+    //    idx = Random.Range(0, points.Count);
+    //    if (ballPool[idx].activeSelf) return;
+
+    //    ballPool[idx].transform.position = points[idx].position;
+    //    ballPool[idx].SetActive(true);
+    //}
 
     void TimeAttack()
     {
@@ -169,7 +179,7 @@ public class GameMg : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        overScoreText.text = string.Format($"Gall\n{totalScore}");
+        overScoreText.text = string.Format($"Goal\n{totalScore}");
         bestScoreText.text = string.Format($"Best score {PlayerPrefs.GetInt("BESTSCORE"),0}");
     }
 

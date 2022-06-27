@@ -17,6 +17,7 @@ TagManager:
   - ENEMY
   - TIMEITEM
   - POWERITEM
+  - GOALIN
   layers:
   - Default
   - TransparentFX

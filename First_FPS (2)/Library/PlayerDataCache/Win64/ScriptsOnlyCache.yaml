@@ -9,17 +9,17 @@ ScriptsOnlyBuild:
     - DuckCtrl
     - FireCtrl
     - FollowCamera
-    - Gall
-    - GallTutorial
-    - GallkeeperCtrl
     - GameMg
+    - Goal
+    - GoalTutorial
+    - GoalkeeperCtrl
     - ItemManager
     - MyGizmo
     - PlayerController
     - SceneMg
     - StartScript
     - TimeItem
-    - TutorialGallin
+    - TutorialGoalin
     - UIMgr
     DOTween.dll:
     - DG.Tweening.Core.DOTweenSettings
@@ -561,7 +561,7 @@ ScriptsOnlyBuild:
       Hash: 6d86365d9c93bbbcae1ea43833218344
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GallTutorial
+    className: GoalTutorial
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -621,7 +621,7 @@ ScriptsOnlyBuild:
       Hash: 1b382e25954a6deff984f91e02e8cf86
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GallkeeperCtrl
+    className: GoalkeeperCtrl
   - hash:
       serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
@@ -867,7 +867,7 @@ ScriptsOnlyBuild:
       Hash: 6d86365d9c93bbbcae1ea43833218344
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Gall
+    className: Goal
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -987,7 +987,7 @@ ScriptsOnlyBuild:
       Hash: 604ba13badea3ba7f770f6cb2ecd6728
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: TutorialGallin
+    className: TutorialGoalin
   - hash:
       serializedVersion: 2
       Hash: 5d27c6e85ec89cfab8577e9e26695e88
@@ -1029,7 +1029,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GallInCtrl
+    className: GoalInCtrl
   - hash:
       serializedVersion: 2
       Hash: d5630f96bd5a6a6eed7e1754c3fb8703
@@ -1083,4 +1083,4 @@ ScriptsOnlyBuild:
   - Assets/01.Scenes/Main.unity
   - Assets/01.Scenes/SampleScene.unity
   - Assets/01.Scenes/TutorialBall.unity
-  playerPath: C:/Users/USER/Desktop/Build/Block_NightMare.exe
+  playerPath: "C:/Users/USER/Desktop/ggm/20107\uB0A8\uC18C\uC815/Block_NightMare.exe"
